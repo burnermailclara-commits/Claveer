@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claveer</title>
 <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Social_Media.jpeg">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <style>
 
 /* CUSTOM FONTS */
@@ -110,9 +110,44 @@ nav {
 }
 .hero-badges { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
 .hero-badge { font-size: 13px; font-weight: 800; padding: 0.4rem 1.1rem; white-space: nowrap; }
-.badge-a { background: white; color: var(--bk); border-radius: 100px; }
-.badge-b { background: var(--or); color: white; border-radius: 6px; transform: rotate(-2deg); }
-.badge-c { background: transparent; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; }
+
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-8px) rotate(1deg); }
+  66%       { transform: translateY(-3px) rotate(-1deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  40%       { transform: translateY(-11px) rotate(-3.5deg); }
+  70%       { transform: translateY(-5px) rotate(-1deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25%       { transform: translateY(-6px) rotate(1.5deg); }
+  75%       { transform: translateY(-12px) rotate(-0.5deg); }
+}
+
+.badge-a {
+  background: white;
+  color: var(--bk);
+  border-radius: 100px;
+  animation: float-a 4.2s ease-in-out infinite;
+}
+.badge-b {
+  background: var(--or);
+  color: white;
+  border-radius: 6px;
+  animation: float-b 3.7s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+.badge-c {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  animation: float-c 5.1s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
 
 .hero h1 {
   font-family: 'Bebas Neue', sans-serif;
@@ -180,7 +215,41 @@ nav {
 .spotlight-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; margin-bottom: 3.5rem; }
 .spotlight-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 6.5vw, 6.5rem); line-height: 0.93; color: var(--bk); }
 .spotlight-heading em { font-style: normal; color: var(--or); }
-.spotlight-sticker { display: inline-flex; align-items: center; justify-content: center; background: var(--or); color: white; font-family: 'Aileron', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; width: 74px; height: 74px; border-radius: 50%; text-align: center; line-height: 1.3; transform: rotate(12deg); vertical-align: middle; margin-left: 0.75rem; }
+.spotlight-sticker { display: none; }
+.stage-circle-wrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.stage-circle-wrap svg {
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 18px;
+  pointer-events: none;
+  overflow: visible;
+}
+.stage-circle-wrap svg path {
+  stroke: var(--or);
+  stroke-width: 5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+.stage-circle-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160%;
+  height: 160%;
+  object-fit: contain;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
 .spotlight-desc { max-width: 320px; font-size: 16px; font-weight: 800; color: var(--gm); line-height: 1.75; flex-shrink: 0; }
 .spotlight-desc strong { color: var(--bk); }
 .spotlight-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
@@ -189,7 +258,7 @@ nav {
 .sp-light { background: white; border: 1px solid var(--gl); }
 .sp-dark  { background: var(--bk); }
 .sp-orange { background: var(--or); }
-.sp-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; }
+.sp-card-num { font-family: 'Caveat', cursive; font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; font-weight: 700; }
 .sp-light .sp-card-num { color: var(--gl); }
 .sp-dark  .sp-card-num { color: rgba(255,255,255,0.12); }
 .sp-orange .sp-card-num { color: rgba(255,255,255,0.3); }
@@ -214,7 +283,7 @@ section { padding: 6rem 3rem; }
 .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
 .svc-card { background: white; border: 1px solid var(--gl); border-radius: 16px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
 .svc-card:hover { border-color: var(--or-l); transform: translateY(-3px); }
-.svc-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gl); line-height: 1; margin-bottom: 0.75rem; }
+.svc-num { font-family: 'Caveat', cursive; font-size: 3rem; color: var(--gl); line-height: 1; margin-bottom: 0.75rem; font-weight: 700; }
 .svc-title { font-size: 20px; font-weight: 800; color: var(--bk); margin-bottom: 0.75rem; }
 .svc-desc { font-size: 14px; font-weight: 800; color: var(--gm); line-height: 1.7; margin-bottom: 1.25rem; }
 .svc-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -232,7 +301,7 @@ section { padding: 6rem 3rem; }
 .process-section { background: var(--ow); }
 .process-card-wrap { margin-top: 3rem; background: var(--cr); border: 1px solid var(--gl); border-radius: 20px; overflow: hidden; }
 .proc-pills { display: flex; gap: 0.6rem; padding: 2rem 2.5rem 0; }
-.proc-pill { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; border: 1.5px solid var(--gl); background: white; font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.02em; color: var(--gm); cursor: pointer; user-select: none; flex-shrink: 0; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.proc-pill { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; border: 1.5px solid var(--gl); background: white; font-family: 'Caveat', cursive; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.02em; color: var(--gm); cursor: pointer; user-select: none; flex-shrink: 0; transition: background 0.2s, border-color 0.2s, color 0.2s; }
 .proc-pill:hover { border-color: var(--or-l); color: var(--or); }
 .proc-pill.active { background: var(--bk); border-color: var(--bk); color: white; }
 .process-stage { display: none; grid-template-columns: 5fr 6fr; align-items: stretch; min-height: 380px; }
@@ -245,8 +314,8 @@ section { padding: 6rem 3rem; }
 .stage-items { display: flex; flex-direction: column; gap: 0.55rem; }
 .stage-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 13px; font-weight: 800; color: var(--gm); line-height: 1.5; }
 .stage-item-dot { width: 5px; height: 5px; background: var(--or); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
-.stage-right { background: #EDEAE2; display: flex; align-items: center; justify-content: center; padding: 2.5rem; }
-.stage-blob { width: 300px; height: 300px; border-radius: 56% 44% 48% 52% / 44% 52% 48% 56%; background: #E0DDD5; display: flex; align-items: center; justify-content: center; }
+.stage-right { background: transparent; display: flex; align-items: center; justify-content: center; padding: 2.5rem; }
+.stage-blob { width: 300px; height: 300px; border-radius: 56% 44% 48% 52% / 44% 52% 48% 56%; background: transparent; display: flex; align-items: center; justify-content: center; }
 .stage-blob svg { width: 210px; height: 210px; }
 .stage-img { width: 260px; height: 260px; object-fit: contain; }
 
@@ -368,6 +437,81 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 .footer-logo { display: flex; align-items: center; gap: 10px; }
 .footer-logo-txt { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
 
+/* SCROLL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger-children.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+.stagger-children.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.stagger-children.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.stagger-children.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.stagger-children.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+.stagger-children.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+
+/* SVG SCROLL UNDERLINES */
+.underline-wrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.underline-wrap svg {
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 18px;
+  pointer-events: none;
+  overflow: visible;
+}
+.underline-wrap svg path {
+  stroke: var(--or);
+  stroke-width: 5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 1rem 1.5rem; }
@@ -404,7 +548,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#cta" class="btn-nav">Book a call</a></li>
+    <li><a href="#contact-form" class="btn-nav">Book a call</a></li>
   </ul>
 </nav>
 
@@ -420,7 +564,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
     We help business owners <strong>attract leads, build community,<br>and feel confident</strong> showing up online.
   </p>
   <div class="hero-ctas">
-    <a href="#cta" class="btn-primary">Book a free strategy call &#8599;</a>
+    <a href="#contact-form" class="btn-primary">Book a free strategy call &#8599;</a>
     <a href="#services" class="btn-ghost-dark">See what we do</a>
   </div>
   <div class="hero-scroll-indicator">
@@ -442,7 +586,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 </div>
 
 <!-- TRUST -->
-<div class="trust-strip">
+<div class="trust-strip reveal">
   <div class="trust-item"><div class="trust-dot"></div>Meta Ads setup &amp; launch</div>
   <div class="trust-item"><div class="trust-dot"></div>Weekly transparent reporting</div>
   <div class="trust-item"><div class="trust-dot"></div>Full-funnel strategy</div>
@@ -453,16 +597,15 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <section class="spotlight-section">
   <div class="spotlight-inner">
     <div class="spotlight-top">
-      <h2 class="spotlight-heading">
+      <h2 class="spotlight-heading reveal-left">
         We provide the <em>spotlight</em>;<br>
-        you take center stage.
-        <span class="spotlight-sticker">Your<br>brand</span>
+        you take center <span class="stage-circle-wrap" id="ul-stage">stage<svg viewBox="0 0 120 18" preserveAspectRatio="none"><path d="M2,12 Q30,4 60,10 Q90,16 118,8" class="ul-path"/></svg><img class="stage-circle-img" src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/spotlight-sticker.png" alt=""></span>.
       </h2>
-      <p class="spotlight-desc">
+      <p class="spotlight-desc reveal-right">
         You have something worth sharing. But <strong>does the internet know?</strong> No presence = Lost revenue.
       </p>
     </div>
-    <div class="spotlight-cards">
+    <div class="spotlight-cards stagger-children">
       <div class="sp-card sp-light">
         <div class="sp-card-num">01</div>
         <h3>You keep what you build</h3>
@@ -485,10 +628,10 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- SERVICES -->
 <section class="services-section" id="services">
   <div class="container">
-    <span class="stag">What we offer</span>
-    <h2 class="sh">Two services.<br>One clear goal.</h2>
-    <p class="ssub">A social strategy that reflects your brand dna.</p>
-    <div class="services-grid">
+    <span class="stag reveal">What we offer</span>
+    <h2 class="sh reveal">Two services.<br>One clear goal.</h2>
+    <p class="ssub reveal">Whether you need paid ads that convert or a social strategy that actually reflects who you are.</p>
+    <div class="services-grid stagger-children">
       <div class="svc-card">
         <div class="svc-num">01</div>
         <div class="svc-title">Meta Ads</div>
@@ -540,9 +683,9 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- PROCESS -->
 <section class="process-section" id="process">
   <div class="container">
-    <span class="stag">The process</span>
-    <h2 class="sh">How a month<br>with Claveer looks.</h2>
-    <div class="process-card-wrap">
+    <span class="stag reveal">The process</span>
+    <h2 class="sh reveal">How a month<br>with Claveer looks.</h2>
+    <div class="process-card-wrap reveal">
       <div class="proc-pills" id="procPills">
         <div class="proc-pill active" data-index="0">00</div>
         <div class="proc-pill" data-index="1">01</div>
@@ -565,6 +708,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="stage-right">
           <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/TABLE%20TIME.PNG" alt="" class="stage-img">
         </div>
+      </div>
       <div class="process-stage" data-index="1">
         <div class="stage-left">
           <span class="stage-week-label">Week 1</span>
@@ -580,6 +724,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="stage-right">
           <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/LAUNCH.PNG" alt="" class="stage-img">
         </div>
+      </div>
       <div class="process-stage" data-index="2">
         <div class="stage-left">
           <span class="stage-week-label">Week 2</span>
@@ -595,6 +740,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="stage-right">
           <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/SPICY.PNG" alt="" class="stage-img">
         </div>
+      </div>
       <div class="process-stage" data-index="3">
         <div class="stage-left">
           <span class="stage-week-label">Week 3</span>
@@ -610,6 +756,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="stage-right">
           <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/COOKING.PNG" alt="" class="stage-img">
         </div>
+      </div>
       <div class="process-stage" data-index="4">
         <div class="stage-left">
           <span class="stage-week-label">Week 4</span>
@@ -624,17 +771,17 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="stage-right">
           <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/EAT%20IT.PNG" alt="" class="stage-img">
         </div>
-    </div>
+      </div>
   </div>
 </section>
 
 <!-- DIFFERENT -->
 <section class="diff-section" id="different">
   <div class="container">
-    <span class="stag" style="color:var(--or-l)">Why us</span>
-    <h2 class="sh" style="color:white">What makes us<br>different.</h2>
-    <p class="ssub" style="color:rgba(255,255,255,.4)">We have built our own communities from scratch. We know what works beyond theory.</p>
-    <div class="diff-grid">
+    <span class="stag reveal" style="color:var(--or-l)">Why us</span>
+    <h2 class="sh reveal" style="color:white">What makes us<br><span class="underline-wrap" id="ul-different">different<svg viewBox="0 0 160 18" preserveAspectRatio="none"><path d="M2,13 Q40,4 80,11 Q120,17 158,7" class="ul-path"/></svg></span>.</h2>
+    <p class="ssub reveal" style="color:rgba(255,255,255,.4)">We have built our own communities from scratch. We know what works beyond theory.</p>
+    <div class="diff-grid stagger-children">
       <div class="diff-card diff-highlight">
         <div class="diff-icon">&#9733;</div>
         <h3>We grew organic communities ourselves</h3>
@@ -672,16 +819,16 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <h2 class="sh">The team behind<br>your growth.</h2>
+    <h2 class="sh reveal">The team behind<br>your growth.</h2>
     <div class="about-grid">
       <div>
-        <p class="about-intro">
+        <p class="about-intro reveal-left">
           Our personal and professional experience are the key to unlock your full potential. <strong>(Remember you are the door)</strong><br><br>
-          We tailor with sensibility, artistry and human care.
+          We tailor with sensibility, artistry and <span class="underline-wrap" id="ul-humancare">human care<svg viewBox="0 0 160 18" preserveAspectRatio="none"><path d="M2,13 Q40,5 80,12 Q120,16 158,8" class="ul-path"/></svg></span>.
         </p>
 
       </div>
-      <div class="team-cards">
+      <div class="team-cards stagger-children">
         <div class="team-card">
           <div class="team-avatar-wrap">
             <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Clarisa_Velez.png" alt="Clarisa Velez">
@@ -724,9 +871,9 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="container">
-    <h2 class="sh">Send us an email<br>we will do the rest</h2>
-    <p>Excited to meet you, Claveer team</p>
-    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <h2 class="sh reveal">Send us an email<br>we will do the rest</h2>
+    <p class="reveal">Excited to meet you, Claveer team</p>
+    <form class="contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="f388d44e-fe7c-484e-af55-fde129cb0f17">
       <input type="hidden" name="subject" value="New message from Claveer website">
       <input type="hidden" name="redirect" value="false">
@@ -811,6 +958,54 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     btn.disabled = false;
   }
 });
+
+// SCROLL REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// SCROLL-LINKED SVG UNDERLINES
+const underlines = [
+  { id: 'ul-stage' },
+  { id: 'ul-different' },
+  { id: 'ul-humancare' },
+];
+
+function lerp(a, b, t) { return a + (b - a) * Math.clamp(t, 0, 1); }
+Math.clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
+
+function updateUnderlines() {
+  underlines.forEach(({ id }) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const path = el.querySelector('.ul-path');
+    if (!path) return;
+
+    const rect = el.getBoundingClientRect();
+    const wh = window.innerHeight;
+
+    // Start animating when element is 80% down the screen, finish when 20% from top
+    const start = wh * 0.85;
+    const end   = wh * 0.2;
+    const progress = Math.clamp((start - rect.top) / (start - end), 0, 1);
+
+    const totalLength = path.getTotalLength();
+    path.style.strokeDasharray  = totalLength;
+    path.style.strokeDashoffset = totalLength * (1 - progress);
+  });
+}
+
+window.addEventListener('scroll', updateUnderlines, { passive: true });
+updateUnderlines();
 </script>
 
 </body>
