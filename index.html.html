@@ -3,11 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claveer — Social Media That Actually Feels Like You</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>Claveer</title>
+<link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Social_Media.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
+
+/* CUSTOM FONTS */
+@font-face {
+  font-family: 'Aileron';
+  src: url('https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Aileron-Regular.otf') format('opentype');
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Aileron';
+  src: url('https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Aileron-Heavy.otf') format('opentype');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Third Rail';
+  src: url('https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Third%20Rail%20-%20Demo.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* RESET */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* TOKENS */
 :root {
   --or: #E86A1A;
   --or-l: #F5A05A;
@@ -19,10 +46,20 @@
   --cr: #F5F0E8;
 }
 
+/* TYPOGRAPHY SYSTEM */
+.text-display { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 12vw, 10.5rem); line-height: 0.88; letter-spacing: 0.01em; text-transform: uppercase; }
+.text-h1      { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 3.5vw, 3.2rem); line-height: 1; letter-spacing: 0.01em; }
+.text-h2      { font-family: 'Aileron', sans-serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 800; line-height: 1.3; }
+.text-body    { font-family: 'Aileron', sans-serif; font-size: 16px; font-weight: 800; line-height: 1.7; }
+.text-body-sm { font-family: 'Aileron', sans-serif; font-size: 13px; font-weight: 800; line-height: 1.6; }
+.text-label   { font-family: 'Aileron', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.text-accent  { font-family: 'Third Rail', serif; letter-spacing: 0.13em; }
+
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Aileron', sans-serif;
+  font-weight: 800;
   background: var(--ow);
   color: var(--bk);
   font-size: 16px;
@@ -41,51 +78,15 @@ nav {
   padding: 1.25rem 3rem;
   background: rgba(15,13,11,0.8);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.logo-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.06em;
-  color: white;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 14px;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.06em; color: white; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: white; }
-
-.btn-nav {
-  background: var(--or) !important;
-  color: white !important;
-  padding: 0.5rem 1.25rem;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-  transition: background 0.2s;
-}
-
-.btn-nav:hover { background: #c85a12 !important; color: white !important; }
+.btn-nav { background: var(--or) !important; color: white !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 13px; font-weight: 800; transition: background 0.2s; }
+.btn-nav:hover { background: #c85a12 !important; }
 
 /* HERO */
 .hero {
@@ -100,7 +101,6 @@ nav {
   position: relative;
   overflow: hidden;
 }
-
 .hero::before {
   content: '';
   position: absolute;
@@ -108,321 +108,96 @@ nav {
   background: radial-gradient(ellipse 80% 55% at 50% 25%, rgba(232,106,26,0.13) 0%, transparent 65%);
   pointer-events: none;
 }
-
-.hero-badges {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-badge {
-  font-size: 13px;
-  font-weight: 400;
-  padding: 0.4rem 1.1rem;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-}
-
-.badge-a {
-  background: white;
-  color: var(--bk);
-  border-radius: 100px;
-}
-
-.badge-b {
-  background: var(--or);
-  color: white;
-  border-radius: 6px;
-  transform: rotate(-2deg);
-}
-
-.badge-c {
-  background: transparent;
-  color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 100px;
-}
+.hero-badges { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+.hero-badge { font-size: 13px; font-weight: 800; padding: 0.4rem 1.1rem; white-space: nowrap; }
+.badge-a { background: white; color: var(--bk); border-radius: 100px; }
+.badge-b { background: var(--or); color: white; border-radius: 6px; transform: rotate(-2deg); }
+.badge-c { background: transparent; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; }
 
 .hero h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4.5rem, 11vw, 10.5rem);
+  font-size: clamp(5rem, 12vw, 10.5rem);
   line-height: 0.88;
   color: white;
   letter-spacing: 0.01em;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   position: relative;
   z-index: 1;
+  text-align: center;
+  text-transform: uppercase;
 }
-
 .hero h1 em {
-  font-style: normal;
+  font-family: 'Third Rail', serif;
+  font-style: italic;
   color: var(--or);
   display: block;
+  letter-spacing: 0.13em;
+  text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  text-transform: uppercase;
 }
-
 .hero-sub {
-  font-size: clamp(15px, 1.8vw, 19px);
-  font-weight: 300;
+  font-size: clamp(15px, 1.4vw, 19px);
+  font-weight: 800;
   color: rgba(255,255,255,0.5);
   max-width: 520px;
   line-height: 1.75;
   margin-bottom: 2.5rem;
+  margin-top: 2rem;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
+.hero-sub strong { color: rgba(255,255,255,0.8); font-weight: 800; }
+.hero-ctas { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+.hero-scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: pulse-line 2s ease-in-out infinite; }
+@keyframes pulse-line { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+.scroll-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
 
-.hero-sub strong { color: rgba(255,255,255,0.8); font-weight: 400; }
-
-.hero-ctas {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.btn-primary {
-  display: inline-block;
-  background: var(--or);
-  color: white;
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 500;
-  transition: background 0.2s, transform 0.15s;
-}
-
+/* BUTTONS */
+.btn-primary { display: inline-block; background: var(--or); color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 4px; font-size: 15px; font-weight: 800; transition: background 0.2s, transform 0.15s; }
 .btn-primary:hover { background: #c85a12; transform: translateY(-1px); }
-
-.btn-ghost-dark {
-  display: inline-block;
-  color: rgba(255,255,255,0.65);
-  text-decoration: none;
-  padding: 1rem 1.5rem;
-  border-radius: 4px;
-  font-size: 15px;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: border-color 0.2s, color 0.2s;
-}
-
+.btn-ghost-dark { display: inline-block; color: rgba(255,255,255,0.65); text-decoration: none; padding: 1rem 1.5rem; border-radius: 4px; font-size: 15px; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s, color 0.2s; }
 .btn-ghost-dark:hover { border-color: rgba(255,255,255,0.4); color: white; }
 
-.hero-scroll-indicator {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 44px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
-  animation: pulse-line 2s ease-in-out infinite;
-}
-
-@keyframes pulse-line {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-.scroll-label {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
-}
-
-/* MARQUEE DIVIDER */
-.marquee-wrap {
-  background: var(--or);
-  overflow: hidden;
-  padding: 1rem 0;
-}
-
-.marquee-track {
-  display: flex;
-  animation: marquee-scroll 20s linear infinite;
-  white-space: nowrap;
-}
-
+/* MARQUEE */
+.marquee-wrap { background: var(--or); overflow: hidden; padding: 1rem 0; }
+.marquee-track { display: flex; animation: marquee-scroll 20s linear infinite; white-space: nowrap; }
 .marquee-track:hover { animation-play-state: paused; }
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.marquee-chunk {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 2rem;
-  flex-shrink: 0;
-}
-
-.marquee-text {
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.92);
-  white-space: nowrap;
-}
-
-.marquee-sep {
-  width: 4px;
-  height: 4px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-chunk { display: flex; align-items: center; gap: 2rem; padding: 0 2rem; flex-shrink: 0; }
+.marquee-text { font-size: 15px; font-weight: 800; color: rgba(255,255,255,0.92); white-space: nowrap; }
+.marquee-sep { width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%; flex-shrink: 0; }
 
 /* TRUST */
-.trust-strip {
-  border-top: 1px solid var(--gl);
-  border-bottom: 1px solid var(--gl);
-  padding: 1.1rem 3rem;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
+.trust-strip { border-top: 1px solid var(--gl); border-bottom: 1px solid var(--gl); padding: 1.1rem 3rem; background: white; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 0.6rem; font-size: 13px; color: var(--gm); }
+.trust-dot { width: 5px; height: 5px; background: var(--or); border-radius: 50%; flex-shrink: 0; }
 
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 13px;
-  color: var(--gm);
-}
-
-.trust-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--or);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* SPOTLIGHT SECTION */
-.spotlight-section {
-  background: var(--ow);
-  padding: 8rem 3rem;
-}
-
+/* SPOTLIGHT */
+.spotlight-section { background: var(--ow); padding: 8rem 3rem; }
 .spotlight-inner { max-width: 1200px; margin: 0 auto; }
-
-.spotlight-top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 3rem;
-  margin-bottom: 3.5rem;
-}
-
-.spotlight-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 6.5vw, 6.5rem);
-  line-height: 0.93;
-  color: var(--bk);
-  position: relative;
-}
-
-.spotlight-heading em {
-  font-style: normal;
-  color: var(--or);
-}
-
-.spotlight-sticker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--or);
-  color: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 1.3;
-  transform: rotate(12deg);
-  vertical-align: middle;
-  margin-left: 0.75rem;
-}
-
-.spotlight-desc {
-  max-width: 320px;
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--gm);
-  line-height: 1.75;
-  flex-shrink: 0;
-}
-
-.spotlight-desc strong { color: var(--bk); font-weight: 500; }
-
-.spotlight-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-
-.sp-card {
-  border-radius: 16px;
-  padding: 2rem 1.75rem;
-  transition: transform 0.22s;
-}
-
+.spotlight-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; margin-bottom: 3.5rem; }
+.spotlight-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 6.5vw, 6.5rem); line-height: 0.93; color: var(--bk); }
+.spotlight-heading em { font-style: normal; color: var(--or); }
+.spotlight-sticker { display: inline-flex; align-items: center; justify-content: center; background: var(--or); color: white; font-family: 'Aileron', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; width: 74px; height: 74px; border-radius: 50%; text-align: center; line-height: 1.3; transform: rotate(12deg); vertical-align: middle; margin-left: 0.75rem; }
+.spotlight-desc { max-width: 320px; font-size: 16px; font-weight: 800; color: var(--gm); line-height: 1.75; flex-shrink: 0; }
+.spotlight-desc strong { color: var(--bk); }
+.spotlight-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.sp-card { border-radius: 16px; padding: 2rem 1.75rem; transition: transform 0.22s; }
 .sp-card:hover { transform: translateY(-4px); }
-
 .sp-light { background: white; border: 1px solid var(--gl); }
 .sp-dark  { background: var(--bk); }
 .sp-orange { background: var(--or); }
-
-.sp-card-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3.5rem;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
+.sp-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; }
 .sp-light .sp-card-num { color: var(--gl); }
 .sp-dark  .sp-card-num { color: rgba(255,255,255,0.12); }
 .sp-orange .sp-card-num { color: rgba(255,255,255,0.3); }
-
-.sp-card h3 {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
+.sp-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 0.5rem; }
 .sp-light h3 { color: var(--bk); }
 .sp-dark  h3 { color: white; }
 .sp-orange h3 { color: white; }
-
-.sp-card p {
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.65;
-}
-
+.sp-card p { font-size: 13px; font-weight: 800; line-height: 1.65; }
 .sp-light p { color: var(--gm); }
 .sp-dark  p { color: rgba(255,255,255,0.45); }
 .sp-orange p { color: rgba(255,255,255,0.85); }
@@ -430,452 +205,168 @@ nav {
 /* SECTION UTILS */
 section { padding: 6rem 3rem; }
 .container { max-width: 1200px; margin: 0 auto; }
-
-.stag {
-  display: block;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--or);
-  margin-bottom: 0.75rem;
-}
-
-.sh {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.5rem, 3.5vw, 3.2rem);
-  line-height: 1;
-  margin-bottom: 0.75rem;
-  color: var(--bk);
-}
-
-.ssub {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--gm);
-  max-width: 480px;
-  line-height: 1.7;
-}
+.stag { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--or); margin-bottom: 0.75rem; }
+.sh { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 3.5vw, 3.2rem); line-height: 1; margin-bottom: 0.75rem; color: var(--bk); }
+.ssub { font-size: 16px; font-weight: 800; color: var(--gm); max-width: 480px; line-height: 1.7; }
 
 /* SERVICES */
 .services-section { background: var(--cr); }
-
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.svc-card {
-  background: white;
-  border: 1px solid var(--gl);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+.svc-card { background: white; border: 1px solid var(--gl); border-radius: 16px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
 .svc-card:hover { border-color: var(--or-l); transform: translateY(-3px); }
-
-.svc-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  color: var(--gl);
-  line-height: 1;
-  margin-bottom: 0.75rem;
-}
-
-.svc-title { font-size: 20px; font-weight: 500; color: var(--bk); margin-bottom: 0.75rem; }
-
-.svc-desc {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--gm);
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-}
-
+.svc-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gl); line-height: 1; margin-bottom: 0.75rem; }
+.svc-title { font-size: 20px; font-weight: 800; color: var(--bk); margin-bottom: 0.75rem; }
+.svc-desc { font-size: 14px; font-weight: 800; color: var(--gm); line-height: 1.7; margin-bottom: 1.25rem; }
 .svc-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-.svc-tag {
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.7rem;
-  border-radius: 100px;
-  background: var(--or-p);
-  color: #854F0B;
-  border: 1px solid #EF9F27;
-}
-
-.workflow-title {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--gm);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--gl);
-}
-
+.svc-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.7rem; border-radius: 100px; background: var(--or-p); color: #854F0B; border: 1px solid #EF9F27; }
+.workflow-title { font-size: 12px; font-weight: 800; color: var(--gm); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1.5rem; margin-bottom: 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--gl); }
 .workflow-steps { display: flex; flex-direction: column; gap: 0.6rem; }
 .wf-step { display: flex; align-items: flex-start; gap: 0.75rem; }
+.wf-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--or-p); border: 1px solid var(--or-l); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: var(--or); margin-top: 1px; }
+.wf-text { font-size: 13px; font-weight: 800; color: var(--gm); line-height: 1.5; }
+.also-included { margin-top: 1.25rem; padding: 1rem; background: var(--or-p); border-radius: 10px; border: 1px solid #EF9F27; }
+.also-title { font-size: 11px; font-weight: 800; color: #854F0B; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.also-included p { font-size: 13px; font-weight: 800; color: #633806; line-height: 1.6; }
 
-.wf-dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--or-p);
-  border: 1px solid var(--or-l);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--or);
-  margin-top: 1px;
-}
-
-.wf-text { font-size: 13px; font-weight: 300; color: var(--gm); line-height: 1.5; }
-
-.also-included {
-  margin-top: 1.25rem;
-  padding: 1rem;
-  background: var(--or-p);
-  border-radius: 10px;
-  border: 1px solid #EF9F27;
-}
-
-.also-title {
-  font-size: 11px;
-  font-weight: 500;
-  color: #854F0B;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.4rem;
-}
-
-.also-included p { font-size: 13px; font-weight: 300; color: #633806; line-height: 1.6; }
-
-/* INTERACTIVE PROCESS */
+/* PROCESS */
 .process-section { background: var(--ow); }
-
-/* The big rectangular card that holds everything */
-.process-card-wrap {
-  margin-top: 3rem;
-  background: var(--cr);
-  border: 1px solid var(--gl);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-/* Number pills row */
-.proc-pills {
-  display: flex;
-  gap: 0.6rem;
-  padding: 2rem 2.5rem 0;
-}
-
-.proc-pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  border: 1.5px solid var(--gl);
-  background: white;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.02em;
-  color: var(--gm);
-  cursor: pointer;
-  user-select: none;
-  flex-shrink: 0;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-  position: relative;
-}
-
-.proc-pill::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 8px;
-  right: 8px;
-  height: 2px;
-  background: var(--or);
-  border-radius: 2px;
-  width: 0;
-  transition: none;
-}
-
+.process-card-wrap { margin-top: 3rem; background: var(--cr); border: 1px solid var(--gl); border-radius: 20px; overflow: hidden; }
+.proc-pills { display: flex; gap: 0.6rem; padding: 2rem 2.5rem 0; }
+.proc-pill { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; border: 1.5px solid var(--gl); background: white; font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.02em; color: var(--gm); cursor: pointer; user-select: none; flex-shrink: 0; transition: background 0.2s, border-color 0.2s, color 0.2s; }
 .proc-pill:hover { border-color: var(--or-l); color: var(--or); }
 .proc-pill.active { background: var(--bk); border-color: var(--bk); color: white; }
-
-/* Stages */
-.process-stage {
-  display: none;
-  grid-template-columns: 5fr 6fr;
-  align-items: stretch;
-  min-height: 380px;
-}
-
-.process-stage.active {
-  display: grid;
-  animation: stageIn 0.38s ease;
-}
-
-@keyframes stageIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Left: text */
-.stage-left {
-  padding: 1.75rem 2.5rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.stage-week-label {
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--or);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.stage-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  color: var(--bk);
-  line-height: 1;
-  margin-bottom: 1rem;
-}
-
-.stage-desc {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--gm);
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
-  max-width: 380px;
-}
-
+.process-stage { display: none; grid-template-columns: 5fr 6fr; align-items: stretch; min-height: 380px; }
+.process-stage.active { display: grid; animation: stageIn 0.38s ease; }
+@keyframes stageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.stage-left { padding: 1.75rem 2.5rem 2.5rem; display: flex; flex-direction: column; justify-content: flex-start; }
+.stage-week-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--or); margin-bottom: 0.5rem; display: block; }
+.stage-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--bk); line-height: 1; margin-bottom: 1rem; }
+.stage-desc { font-size: 15px; font-weight: 800; color: var(--gm); line-height: 1.75; margin-bottom: 1.25rem; max-width: 380px; }
 .stage-items { display: flex; flex-direction: column; gap: 0.55rem; }
-
-.stage-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--gm);
-  line-height: 1.5;
-}
-
-.stage-item-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--or);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 6px;
-}
-
-/* Right: illustration */
-.stage-right {
-  background: #EDEAE2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2.5rem;
-  position: relative;
-}
-
-.stage-blob {
-  width: 300px;
-  height: 300px;
-  border-radius: 56% 44% 48% 52% / 44% 52% 48% 56%;
-  background: #E0DDD5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stage-blob svg {
-  width: 210px;
-  height: 210px;
-}
+.stage-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 13px; font-weight: 800; color: var(--gm); line-height: 1.5; }
+.stage-item-dot { width: 5px; height: 5px; background: var(--or); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.stage-right { background: #EDEAE2; display: flex; align-items: center; justify-content: center; padding: 2.5rem; }
+.stage-blob { width: 300px; height: 300px; border-radius: 56% 44% 48% 52% / 44% 52% 48% 56%; background: #E0DDD5; display: flex; align-items: center; justify-content: center; }
+.stage-blob svg { width: 210px; height: 210px; }
+.stage-img { width: 260px; height: 260px; object-fit: contain; }
 
 /* DIFFERENT */
-.diff-section { background: var(--bk); border-top: 1px solid rgba(255,255,255,0.05); }
-
-.diff-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.diff-card {
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 16px;
-  padding: 1.75rem;
-  transition: border-color 0.2s;
-}
-
+.diff-section { background: var(--bk); }
+.diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.diff-card { border: 1px solid rgba(255,255,255,0.09); border-radius: 16px; padding: 1.75rem; transition: border-color 0.2s; }
 .diff-card:hover { border-color: rgba(255,255,255,0.2); }
-
-.diff-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: rgba(232,106,26,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  font-size: 16px;
-  color: var(--or);
-}
-
-.diff-card h3 { font-size: 15px; font-weight: 500; color: white; margin-bottom: 0.5rem; }
-.diff-card p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.65; }
-
+.diff-icon { width: 38px; height: 38px; border-radius: 8px; background: rgba(232,106,26,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 16px; color: var(--or); }
+.diff-card h3 { font-size: 15px; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+.diff-card p { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.4); line-height: 1.65; }
 .diff-highlight { background: var(--or); border-color: var(--or); }
 .diff-highlight .diff-icon { background: rgba(255,255,255,0.2); color: white; }
 .diff-highlight h3 { color: white; }
 .diff-highlight p { color: rgba(255,255,255,0.85); }
 
 /* ABOUT */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-top: 3rem;
-  align-items: start;
-}
-
-.about-intro {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--gm);
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-
-.about-intro strong { color: var(--bk); font-weight: 500; }
-
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
+.about-intro { font-size: 17px; font-weight: 800; color: var(--gm); line-height: 1.75; margin-bottom: 2rem; }
+.about-intro strong { color: var(--bk); }
 .values-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
 .values-list li { display: flex; gap: 1rem; align-items: flex-start; }
-
-.v-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: var(--or-p);
-  border: 1px solid var(--or-l);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--or);
-  font-size: 15px;
-  margin-top: 2px;
-}
-
-.v-text h4 { font-size: 15px; font-weight: 500; margin-bottom: 3px; color: var(--bk); }
-.v-text p { font-size: 13px; font-weight: 300; color: var(--gm); line-height: 1.55; }
-
-.team-cards { display: flex; flex-direction: column; gap: 1rem; }
-
-.team-card {
-  background: white;
-  border: 1px solid var(--gl);
-  border-radius: 14px;
-  padding: 1.5rem;
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-  transition: border-color 0.2s;
-}
-
-.team-card:hover { border-color: var(--or-l); }
-
-.team-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--or-p);
-  border: 2px solid var(--or-l);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
-  color: var(--or);
-  flex-shrink: 0;
-}
-
-.team-name { font-size: 16px; font-weight: 500; color: var(--bk); margin-bottom: 2px; }
-.team-role { font-size: 11px; color: var(--or); font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.6rem; }
-.team-bio { font-size: 13px; font-weight: 300; color: var(--gm); line-height: 1.6; }
+.v-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--or-p); border: 1px solid var(--or-l); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--or); font-size: 15px; margin-top: 2px; }
+.v-text h4 { font-size: 15px; font-weight: 800; margin-bottom: 3px; color: var(--bk); }
+.v-text p { font-size: 13px; font-weight: 800; color: var(--gm); line-height: 1.55; }
+.team-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.team-card { background: transparent; border: none; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.team-avatar-wrap { width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; background: var(--gl); }
+.team-avatar-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.team-avatar-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--or); background: var(--or-p); }
+.team-name { font-size: 22px; font-weight: 800; color: var(--bk); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.team-role { font-size: 11px; color: var(--gm); font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+.team-bio { font-size: 13px; font-weight: 800; color: var(--gm); line-height: 1.6; margin-bottom: 1.25rem; }
+.team-socials { display: flex; gap: 0.75rem; align-items: center; }
+.team-social { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--gl); display: flex; align-items: center; justify-content: center; color: var(--gm); text-decoration: none; font-size: 13px; transition: border-color 0.2s, color 0.2s; }
+.team-social:hover { border-color: var(--or); color: var(--or); }
 
 /* CTA */
-.cta-section {
-  background: var(--or);
-  padding: 8rem 3rem;
-  text-align: center;
-}
-
+.cta-section { background: var(--or); padding: 8rem 3rem; text-align: center; }
 .cta-section .sh { color: white; font-size: clamp(3rem, 5vw, 5rem); }
-.cta-section p { color: rgba(255,255,255,0.8); font-size: 17px; font-weight: 300; margin-bottom: 2.5rem; }
-
-.btn-white {
-  display: inline-block;
-  background: white;
-  color: var(--or);
-  text-decoration: none;
-  padding: 1rem 2.5rem;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 500;
-  transition: transform 0.15s;
-}
-
+.cta-section p { color: rgba(255,255,255,0.8); font-size: 17px; font-weight: 800; margin-bottom: 2.5rem; }
+.btn-white { display: inline-block; background: white; color: var(--or); text-decoration: none; padding: 1rem 2.5rem; border-radius: 4px; font-size: 15px; font-weight: 800; transition: transform 0.15s; }
 .btn-white:hover { transform: translateY(-2px); }
 
-/* FOOTER */
-footer {
-  background: var(--bk);
-  color: rgba(255,255,255,0.4);
-  padding: 2.5rem 3rem;
+/* CONTACT FORM */
+.contact-form {
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 13px;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 1.25rem;
 }
-
-footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
-
-.footer-logo { display: flex; align-items: center; gap: 10px; }
-.footer-logo-txt {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: rgba(255,255,255,0.6);
-  letter-spacing: 0.06em;
 }
+.form-group input,
+.form-group textarea {
+  font-family: 'Aileron', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  resize: none;
+  width: 100%;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: white;
+  background: rgba(255,255,255,0.18);
+}
+.contact-form .btn-white {
+  align-self: center;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  border: none;
+  font-family: 'Aileron', sans-serif;
+}
+.form-success {
+  display: none;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* FOOTER */
+footer { background: var(--bk); color: rgba(255,255,255,0.4); padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 1rem; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo-txt { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
@@ -893,12 +384,12 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
   .trust-strip { gap: 1.25rem; padding: 1rem 1.5rem; }
   footer { flex-direction: column; gap: 0.75rem; }
 }
-
 @media (max-width: 600px) {
   .spotlight-cards { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 4rem; }
+  .hero h1 { font-size: 3.5rem; }
   .spotlight-heading { font-size: 3rem; }
 }
+
 </style>
 </head>
 <body>
@@ -906,11 +397,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
-    <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
-      <ellipse cx="50" cy="55" rx="38" ry="28" stroke="#E86A1A" stroke-width="7" transform="rotate(-20 50 55)"/>
-      <line x1="30" y1="15" x2="70" y2="85" stroke="#E86A1A" stroke-width="7" stroke-linecap="round"/>
-      <line x1="20" y1="50" x2="80" y2="50" stroke="#E86A1A" stroke-width="7" stroke-linecap="round"/>
-    </svg>
+    <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Social_Media.jpeg" alt="Claveer" style="width:36px;height:36px;object-fit:contain;border-radius:50%;">
     <span class="logo-text">Claveer</span>
   </a>
   <ul class="nav-links">
@@ -928,104 +415,68 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
     <span class="hero-badge badge-b">Authentic</span>
     <span class="hero-badge badge-c">Strategic</span>
   </div>
-
-  <h1>Your brand,<br>finally <em>alive</em><br>on social media.</h1>
-
+  <h1>Your brand,<br>finally<br><em>alive</em><br>on social media.</h1>
   <p class="hero-sub">
-    We help business owners <strong>attract leads, build community, and feel confident</strong> showing up online — especially on Instagram.
+    We help business owners <strong>attract leads, build community,<br>and feel confident</strong> showing up online. Especially on Instagram.
   </p>
-
   <div class="hero-ctas">
-    <a href="#cta" class="btn-primary">Book a free strategy call ↗</a>
+    <a href="#cta" class="btn-primary">Book a free strategy call &#8599;</a>
     <a href="#services" class="btn-ghost-dark">See what we do</a>
   </div>
-
   <div class="hero-scroll-indicator">
     <div class="scroll-line"></div>
     <span class="scroll-label">scroll</span>
   </div>
 </section>
 
-<!-- ANIMATED MARQUEE DIVIDER -->
+<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <div class="marquee-chunk">
-      <span class="marquee-text">You built something great.</span>
-      <span class="marquee-sep"></span>
-      <span class="marquee-text">Your social media should feel like it.</span>
-      <span class="marquee-sep"></span>
-    </div>
-    <div class="marquee-chunk">
-      <span class="marquee-text">You built something great.</span>
-      <span class="marquee-sep"></span>
-      <span class="marquee-text">Your social media should feel like it.</span>
-      <span class="marquee-sep"></span>
-    </div>
-    <div class="marquee-chunk">
-      <span class="marquee-text">You built something great.</span>
-      <span class="marquee-sep"></span>
-      <span class="marquee-text">Your social media should feel like it.</span>
-      <span class="marquee-sep"></span>
-    </div>
-    <div class="marquee-chunk">
-      <span class="marquee-text">You built something great.</span>
-      <span class="marquee-sep"></span>
-      <span class="marquee-text">Your social media should feel like it.</span>
-      <span class="marquee-sep"></span>
-    </div>
-    <div class="marquee-chunk">
-      <span class="marquee-text">You built something great.</span>
-      <span class="marquee-sep"></span>
-      <span class="marquee-text">Your social media should feel like it.</span>
-      <span class="marquee-sep"></span>
-    </div>
-    <div class="marquee-chunk">
-      <span class="marquee-text">You built something great.</span>
-      <span class="marquee-sep"></span>
-      <span class="marquee-text">Your social media should feel like it.</span>
-      <span class="marquee-sep"></span>
-    </div>
+    <div class="marquee-chunk"><span class="marquee-text">You built something great.</span><span class="marquee-sep"></span><span class="marquee-text">Your social media should feel like it.</span><span class="marquee-sep"></span></div>
+    <div class="marquee-chunk"><span class="marquee-text">You built something great.</span><span class="marquee-sep"></span><span class="marquee-text">Your social media should feel like it.</span><span class="marquee-sep"></span></div>
+    <div class="marquee-chunk"><span class="marquee-text">You built something great.</span><span class="marquee-sep"></span><span class="marquee-text">Your social media should feel like it.</span><span class="marquee-sep"></span></div>
+    <div class="marquee-chunk"><span class="marquee-text">You built something great.</span><span class="marquee-sep"></span><span class="marquee-text">Your social media should feel like it.</span><span class="marquee-sep"></span></div>
+    <div class="marquee-chunk"><span class="marquee-text">You built something great.</span><span class="marquee-sep"></span><span class="marquee-text">Your social media should feel like it.</span><span class="marquee-sep"></span></div>
+    <div class="marquee-chunk"><span class="marquee-text">You built something great.</span><span class="marquee-sep"></span><span class="marquee-text">Your social media should feel like it.</span><span class="marquee-sep"></span></div>
   </div>
 </div>
 
-<!-- TRUST STRIP -->
+<!-- TRUST -->
 <div class="trust-strip">
-  <div class="trust-item"><div class="trust-dot"></div>Instagram-first approach</div>
   <div class="trust-item"><div class="trust-dot"></div>Meta Ads setup &amp; launch</div>
   <div class="trust-item"><div class="trust-dot"></div>Weekly transparent reporting</div>
   <div class="trust-item"><div class="trust-dot"></div>Full-funnel strategy</div>
-  <div class="trust-item"><div class="trust-dot"></div>30-day engagement</div>
+  <div class="trust-item"><div class="trust-dot"></div>Personalized engagement</div>
 </div>
 
-<!-- SPOTLIGHT SECTION -->
+<!-- SPOTLIGHT -->
 <section class="spotlight-section">
   <div class="spotlight-inner">
     <div class="spotlight-top">
       <h2 class="spotlight-heading">
         We provide the <em>spotlight</em>;<br>
-        you take center<br>stage.
+        you take center stage.
         <span class="spotlight-sticker">Your<br>brand</span>
       </h2>
       <p class="spotlight-desc">
-        Most businesses have something real worth sharing. The problem isn't the product — it's that <strong>nobody can see it clearly</strong>. We fix that with ads and content that actually feel like you.
+        You have something worth sharing. But <strong>does the internet know?</strong> No presence = Lost revenue.
       </p>
     </div>
-
     <div class="spotlight-cards">
       <div class="sp-card sp-light">
         <div class="sp-card-num">01</div>
         <h3>You keep what you build</h3>
-        <p>Your Meta account, your audience, your results. We set everything up in your name so you own it fully — before, during, and after.</p>
+        <p>Your Meta account, your audience, your results. We set everything up in your name so you own it fully.</p>
       </div>
       <div class="sp-card sp-dark">
         <div class="sp-card-num">02</div>
         <h3>We study what actually works</h3>
-        <p>Before we create anything, we analyze active ads in your niche. No templates — patterns from what's already converting right now.</p>
+        <p>Before we create anything, we do a full competitive analysis of your niche. No templates. Patterns from what is already converting.</p>
       </div>
       <div class="sp-card sp-orange">
         <div class="sp-card-num">03</div>
-        <h3>You'll never read data alone</h3>
-        <p>Every number comes with context and a next step. We explain what happened, why it happened, and what we'd do next.</p>
+        <h3>You will never read data alone</h3>
+        <p>Every number comes with context and a next step. We explain what happened, why it happened, and what we would do next.</p>
       </div>
     </div>
   </div>
@@ -1036,16 +487,14 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
   <div class="container">
     <span class="stag">What we offer</span>
     <h2 class="sh">Two services.<br>One clear goal.</h2>
-    <p class="ssub">Whether you need paid ads that convert or a social strategy that actually reflects who you are — we've got you.</p>
-
+    <p class="ssub">Whether you need paid ads that convert or a social strategy that actually reflects who you are.</p>
     <div class="services-grid">
       <div class="svc-card">
         <div class="svc-num">01</div>
-        <div class="svc-title">Instagram Ads</div>
-        <div class="svc-desc">We build and run a complete Meta Ads campaign around your specific business — the creative, the targeting, and the follow-up. When someone clicks, they're already halfway to becoming a client.</div>
+        <div class="svc-title">Meta Ads</div>
+        <div class="svc-desc">We build and run a complete Meta Ads campaign around your specific business. The creative, the targeting, and the follow-up. When someone clicks, they are already halfway to becoming a client.</div>
         <div class="svc-tags">
           <span class="svc-tag">Meta Ads</span>
-          <span class="svc-tag">6 creatives</span>
           <span class="svc-tag">Full setup</span>
           <span class="svc-tag">KPI reports</span>
           <span class="svc-tag">Lead generation</span>
@@ -1053,17 +502,16 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="workflow-title">How it works</div>
         <div class="workflow-steps">
           <div class="wf-step"><div class="wf-dot">1</div><div class="wf-text">Onboarding: we learn your business, star product, and goals</div></div>
-          <div class="wf-step"><div class="wf-dot">2</div><div class="wf-text">We craft 6 ad creatives tailored to your audience</div></div>
+          <div class="wf-step"><div class="wf-dot">2</div><div class="wf-text">We craft the creatives tailored to your audience</div></div>
           <div class="wf-step"><div class="wf-dot">3</div><div class="wf-text">Campaign goes live inside your Meta Business account</div></div>
-          <div class="wf-step"><div class="wf-dot">4</div><div class="wf-text">Weekly reports + check-ins throughout the month</div></div>
-          <div class="wf-step"><div class="wf-dot">5</div><div class="wf-text">Closing session: full results + video recap you keep</div></div>
+          <div class="wf-step"><div class="wf-dot">4</div><div class="wf-text">Weekly reports and check-ins throughout the month</div></div>
+          <div class="wf-step"><div class="wf-dot">5</div><div class="wf-text">Closing session: full results and video recap you keep</div></div>
         </div>
       </div>
-
       <div class="svc-card">
         <div class="svc-num">02</div>
-        <div class="svc-title">Social Media Strategy</div>
-        <div class="svc-desc">We build a content system that looks and sounds like you — so your followers can feel your brand essence, not a generic template. From objectives to calendars, we handle the full workflow.</div>
+        <div class="svc-title">Monthly Retainer</div>
+        <div class="svc-desc">We build a content system that looks and sounds like you. From objectives to calendars, we handle the full workflow and keep you in the loop every step of the way.</div>
         <div class="svc-tags">
           <span class="svc-tag">Brand voice</span>
           <span class="svc-tag">Content calendar</span>
@@ -1076,28 +524,25 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
           <div class="wf-step"><div class="wf-dot">1</div><div class="wf-text">Define objectives, target audience, and brand voice</div></div>
           <div class="wf-step"><div class="wf-dot">2</div><div class="wf-text">Define CTA, motivators, and content formats</div></div>
           <div class="wf-step"><div class="wf-dot">3</div><div class="wf-text">Create scripts, copy, and posting calendar</div></div>
-          <div class="wf-step"><div class="wf-dot">4</div><div class="wf-text">Produce creatives — image or video</div></div>
+          <div class="wf-step"><div class="wf-dot">4</div><div class="wf-text">Produce creatives in image or video</div></div>
           <div class="wf-step"><div class="wf-dot">5</div><div class="wf-text">Schedule posts with copy and CTAs</div></div>
           <div class="wf-step"><div class="wf-dot">6</div><div class="wf-text">Monitor performance, follow up, and iterate</div></div>
         </div>
         <div class="also-included">
           <div class="also-title">Also included</div>
-          <p>Awareness campaigns for launches, dates &amp; promotions &nbsp;·&nbsp; Full-funnel strategy: Awareness → Consideration → Conversion &nbsp;·&nbsp; Automated link replies and DM flows</p>
+          <p>Awareness campaigns for launches, dates and promotions. Full-funnel strategy: Awareness, Consideration, Conversion. Automated link replies and DM flows.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INTERACTIVE PROCESS -->
+<!-- PROCESS -->
 <section class="process-section" id="process">
   <div class="container">
     <span class="stag">The process</span>
     <h2 class="sh">How a month<br>with Claveer looks.</h2>
-
     <div class="process-card-wrap">
-
-      <!-- NUMBER PILLS inside the card -->
       <div class="proc-pills" id="procPills">
         <div class="proc-pill active" data-index="0">00</div>
         <div class="proc-pill" data-index="1">01</div>
@@ -1105,233 +550,120 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
         <div class="proc-pill" data-index="3">03</div>
         <div class="proc-pill" data-index="4">04</div>
       </div>
-
-      <!-- STAGE 0 -->
       <div class="process-stage active" data-index="0">
         <div class="stage-left">
           <span class="stage-week-label">Week 0</span>
           <div class="stage-title">Table Time</div>
-          <p class="stage-desc">We sit down virtually with you to understand everything: your star product, your prices, what you've already tried, what you don't want, and what success looks like for you.</p>
+          <p class="stage-desc">We sit down virtually with you to understand everything: your star product, your prices, what you have already tried, and what success looks like for you.</p>
           <div class="stage-items">
             <div class="stage-item"><div class="stage-item-dot"></div>Deep-dive onboarding session on Google Meet</div>
             <div class="stage-item"><div class="stage-item-dot"></div>We learn your business, audience, and goals</div>
-            <div class="stage-item"><div class="stage-item-dot"></div>6 ad creatives crafted from scratch</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>Creatives crafted from scratch</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Contract shared and expectations set before launch</div>
           </div>
         </div>
         <div class="stage-right">
-          <div class="stage-blob">
-            <svg viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="45" y="122" width="120" height="12" rx="4" fill="#0F0D0B" opacity="0.08" stroke="#0F0D0B" stroke-width="2"/>
-              <ellipse cx="105" cy="134" rx="60" ry="10" stroke="#0F0D0B" stroke-width="2" fill="none"/>
-              <circle cx="65" cy="104" r="14" stroke="#0F0D0B" stroke-width="2.5" fill="none"/>
-              <path d="M51 128 C51 115 79 115 79 128" stroke="#0F0D0B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <circle cx="145" cy="104" r="14" stroke="#0F0D0B" stroke-width="2.5" fill="none"/>
-              <path d="M131 128 C131 115 159 115 159 128" stroke="#0F0D0B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <rect x="90" y="112" width="30" height="22" rx="3" fill="white" stroke="#0F0D0B" stroke-width="2"/>
-              <line x1="95" y1="118" x2="115" y2="118" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="95" y1="123" x2="115" y2="123" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="95" y1="128" x2="108" y2="128" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="105" cy="48" r="14" stroke="#0F0D0B" stroke-width="2.5" fill="none"/>
-              <path d="M99 62 L101 69 L109 69 L111 62" stroke="#0F0D0B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="101" y1="66" x2="109" y2="66" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round"/>
-              <line x1="50" y1="50" x2="50" y2="42" stroke="#E86A1A" stroke-width="2" stroke-linecap="round"/>
-              <line x1="46" y1="46" x2="54" y2="46" stroke="#E86A1A" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="162" cy="48" r="9" stroke="#0F0D0B" stroke-width="2" fill="none"/>
-              <circle cx="162" cy="48" r="4" fill="#0F0D0B" opacity="0.2"/>
-              <path d="M155 78 C155 75 158 72 161 75 C164 72 167 75 167 78 C167 82 161 87 161 87 C161 87 155 82 155 78Z" fill="#E86A1A" opacity="0.75"/>
-              <line x1="176" y1="90" x2="176" y2="82" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-              <line x1="172" y1="86" x2="180" y2="86" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-            </svg>
-          </div>
+          <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/TABLE%20TIME.PNG" alt="" class="stage-img">
         </div>
-      </div>
-
-      <!-- STAGE 1 -->
       <div class="process-stage" data-index="1">
         <div class="stage-left">
           <span class="stage-week-label">Week 1</span>
           <div class="stage-title">Launch</div>
-          <p class="stage-desc">Ads go live. By end of the week you receive your first report — what's running, why we made those creative choices, and what the early numbers look like.</p>
+          <p class="stage-desc">Creatives go live. By end of the week you receive your first report. What is running, why we made those creative choices, and what the early numbers look like.</p>
           <div class="stage-items">
             <div class="stage-item"><div class="stage-item-dot"></div>Campaign live inside your Meta account</div>
             <div class="stage-item"><div class="stage-item-dot"></div>First KPI report with screenshots and notes</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Explanation of every creative decision made</div>
-            <div class="stage-item"><div class="stage-item-dot"></div>End-of-week check-in: "how are you feeling so far?"</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>End-of-week check-in</div>
           </div>
         </div>
         <div class="stage-right">
-          <div class="stage-blob">
-            <svg viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="72" y="38" width="66" height="114" rx="10" fill="white" stroke="#0F0D0B" stroke-width="2.5"/>
-              <rect x="79" y="50" width="52" height="70" rx="4" fill="#F5F0E8" stroke="#0F0D0B" stroke-width="1.5"/>
-              <circle cx="105" cy="140" r="5" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="1.5"/>
-              <rect x="83" y="54" width="44" height="28" rx="3" fill="#E86A1A" opacity="0.9"/>
-              <line x1="83" y1="90" x2="127" y2="90" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="83" y1="97" x2="118" y2="97" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <rect x="83" y="105" width="44" height="10" rx="3" fill="#0F0D0B" opacity="0.07"/>
-              <path d="M152 72 C152 58 165 46 165 46 C165 46 178 58 178 72 C178 84 171 93 162 97 C153 93 146 84 146 72 Z" stroke="#0F0D0B" stroke-width="2.5" fill="none"/>
-              <circle cx="162" cy="72" r="7" stroke="#0F0D0B" stroke-width="2" fill="none"/>
-              <path d="M156 94 L150 108 L162 102 L174 108 L168 94" stroke="#0F0D0B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M158 100 C158 108 166 108 166 100" fill="#E86A1A"/>
-              <circle cx="46" cy="64" r="3" fill="#E86A1A"/>
-              <circle cx="52" cy="80" r="2" fill="#E86A1A" opacity="0.55"/>
-              <line x1="165" y1="130" x2="165" y2="122" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-              <line x1="161" y1="126" x2="169" y2="126" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-            </svg>
-          </div>
+          <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/LAUNCH.PNG" alt="" class="stage-img">
         </div>
-      </div>
-
-      <!-- STAGE 2 -->
       <div class="process-stage" data-index="2">
         <div class="stage-left">
           <span class="stage-week-label">Week 2</span>
           <div class="stage-title">Spicy</div>
-          <p class="stage-desc">Early signals come in. We watch closely, read the data, and start optimizing based on what's working and what isn't before it becomes a problem.</p>
+          <p class="stage-desc">Early signals come in. We watch closely, read the data, and start optimizing based on what is working and what is not.</p>
           <div class="stage-items">
-            <div class="stage-item"><div class="stage-item-dot"></div>Performance review: what's clicking and what isn't</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>Performance review: what is clicking and what is not</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Adjustments to targeting or creative if needed</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Second weekly KPI report sent</div>
-            <div class="stage-item"><div class="stage-item-dot"></div>Coaching on handling incoming messages</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>Coaching on next steps messages</div>
           </div>
         </div>
         <div class="stage-right">
-          <div class="stage-blob">
-            <svg viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="38" y1="165" x2="178" y2="165" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round"/>
-              <rect x="44" y="128" width="20" height="36" rx="3" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="70" y="108" width="20" height="56" rx="3" fill="#E86A1A" opacity="0.8" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="96" y="90" width="20" height="74" rx="3" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="122" y="100" width="20" height="64" rx="3" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="148" y="74" width="20" height="90" rx="3" fill="#E86A1A" stroke="#0F0D0B" stroke-width="2"/>
-              <path d="M54 146 L80 118 L106 96 L132 108 L158 80" stroke="#E86A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="66" cy="58" r="16" stroke="#0F0D0B" stroke-width="2.5" fill="none"/>
-              <line x1="77" y1="69" x2="88" y2="80" stroke="#0F0D0B" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M58 54 C60 48 72 48 72 54" stroke="#E86A1A" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <path d="M158 50 L165 42 L172 50" stroke="#0F0D0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <line x1="165" y1="42" x2="165" y2="65" stroke="#0F0D0B" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/SPICY.PNG" alt="" class="stage-img">
         </div>
-      </div>
-
-      <!-- STAGE 3 -->
       <div class="process-stage" data-index="3">
         <div class="stage-left">
           <span class="stage-week-label">Week 3</span>
           <div class="stage-title">Cooking</div>
-          <p class="stage-desc">We check how you're handling the leads and send the third KPI summary with fresh advice. A quick call while we wait for the final week to arrive.</p>
+          <p class="stage-desc">We send the third KPI summary.</p>
           <div class="stage-items">
-            <div class="stage-item"><div class="stage-item-dot"></div>Review of how you're handling incoming leads</div>
-            <div class="stage-item"><div class="stage-item-dot"></div>Tips on follow-up messages and closing</div>
-            <div class="stage-item"><div class="stage-item-dot"></div>Third weekly KPI report with updated strategy</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>Performance review.</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>Tips on follow-up according to your goals</div>
+            <div class="stage-item"><div class="stage-item-dot"></div>Third weekly KPI report</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Optional check-in call</div>
           </div>
         </div>
         <div class="stage-right">
-          <div class="stage-blob">
-            <svg viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="55" y="108" width="100" height="38" rx="6" fill="white" stroke="#0F0D0B" stroke-width="2.5"/>
-              <rect x="59" y="98" width="92" height="14" rx="5" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2.5"/>
-              <rect x="92" y="88" width="26" height="12" rx="5" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="37" y="110" width="20" height="10" rx="5" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="153" y="110" width="20" height="10" rx="5" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <ellipse cx="105" cy="147" rx="50" ry="10" stroke="#0F0D0B" stroke-width="2" fill="none"/>
-              <path d="M86 94 C84 84 90 78 88 68" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35"/>
-              <path d="M105 92 C103 80 111 74 109 62" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35"/>
-              <path d="M124 94 C122 84 128 78 126 68" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35"/>
-              <circle cx="74" cy="124" r="4" fill="#E86A1A" opacity="0.85"/>
-              <circle cx="105" cy="120" r="4" fill="#E86A1A" opacity="0.85"/>
-              <circle cx="136" cy="126" r="4" fill="#E86A1A" opacity="0.85"/>
-              <rect x="130" y="50" width="58" height="34" rx="8" fill="white" stroke="#0F0D0B" stroke-width="2"/>
-              <path d="M142 84 L138 94 L152 84" fill="white" stroke="#0F0D0B" stroke-width="2" stroke-linejoin="round"/>
-              <line x1="138" y1="61" x2="180" y2="61" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="138" y1="68" x2="174" y2="68" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="138" y1="75" x2="160" y2="75" stroke="#0F0D0B" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
+          <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/COOKING.PNG" alt="" class="stage-img">
         </div>
-      </div>
-
-      <!-- STAGE 4 -->
       <div class="process-stage" data-index="4">
         <div class="stage-left">
           <span class="stage-week-label">Week 4</span>
           <div class="stage-title">Eat It</div>
-          <p class="stage-desc">We close the month together. Full results, honest talk on what worked and what didn't, and what comes next. Plus a short video recap — yours to keep forever.</p>
+          <p class="stage-desc">We close the month together. Full results, honest talk on what worked and what did not, and what comes next.</p>
           <div class="stage-items">
             <div class="stage-item"><div class="stage-item-dot"></div>Closing session: impressions, leads, conversions</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Honest review: what worked and what was missing</div>
             <div class="stage-item"><div class="stage-item-dot"></div>Suggestions for what to do next</div>
-            <div class="stage-item"><div class="stage-item-dot"></div>Video recap delivered — yours to keep forever</div>
           </div>
         </div>
         <div class="stage-right">
-          <div class="stage-blob">
-            <svg viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M68 68 L76 138 L134 138 L142 68 Z" fill="white" stroke="#0F0D0B" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M68 78 C52 78 48 96 68 98" stroke="#0F0D0B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M142 78 C158 78 162 96 142 98" stroke="#0F0D0B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <rect x="98" y="138" width="14" height="16" rx="2" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="88" y="152" width="34" height="8" rx="3" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <rect x="84" y="158" width="42" height="8" rx="3" fill="#E8E4DE" stroke="#0F0D0B" stroke-width="2"/>
-              <path d="M105 84 L108 94 L119 94 L110 101 L113 111 L105 104 L97 111 L100 101 L91 94 L102 94 Z" fill="#E86A1A" stroke="#E86A1A" stroke-width="0.5" stroke-linejoin="round"/>
-              <rect x="42" y="54" width="8" height="8" rx="2" fill="#E86A1A" transform="rotate(20 42 54)" opacity="0.8"/>
-              <rect x="158" y="60" width="7" height="7" rx="2" fill="#0F0D0B" transform="rotate(-15 158 60)" opacity="0.4"/>
-              <circle cx="52" cy="86" r="4" fill="#E86A1A" opacity="0.55"/>
-              <circle cx="162" cy="82" r="3" fill="#E86A1A" opacity="0.8"/>
-              <rect x="148" y="44" width="6" height="6" rx="1" fill="#E86A1A" transform="rotate(30 148 44)" opacity="0.7"/>
-              <line x1="38" y1="70" x2="44" y2="64" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-              <line x1="36" y1="78" x2="43" y2="78" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-              <line x1="170" y1="68" x2="176" y2="62" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-            </svg>
-          </div>
+          <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/EAT%20IT.PNG" alt="" class="stage-img">
         </div>
-      </div>
-
     </div>
   </div>
 </section>
-
 
 <!-- DIFFERENT -->
 <section class="diff-section" id="different">
   <div class="container">
     <span class="stag" style="color:var(--or-l)">Why us</span>
     <h2 class="sh" style="color:white">What makes us<br>different.</h2>
-    <p class="ssub" style="color:rgba(255,255,255,.4)">We don't just run ads for others. We've built our own communities from scratch — so we know what works beyond theory.</p>
-
+    <p class="ssub" style="color:rgba(255,255,255,.4)">We have built our own communities from scratch. We know what works beyond theory.</p>
     <div class="diff-grid">
       <div class="diff-card diff-highlight">
-        <div class="diff-icon">★</div>
+        <div class="diff-icon">&#9733;</div>
         <h3>We grew organic communities ourselves</h3>
-        <p>Before we did this for clients, we built our own audiences. We know the craft from the inside — not just from a dashboard.</p>
+        <p>Before we did this for clients, we built our own audiences. We know the craft from the inside.</p>
       </div>
       <div class="diff-card">
-        <div class="diff-icon">◎</div>
+        <div class="diff-icon">&#9678;</div>
         <h3>We make your essence visible</h3>
-        <p>Your social media should feel like you — your values, your personality — translated into content people actually connect with.</p>
+        <p>Your social media should feel like you. Your values, your personality, translated into content people connect with.</p>
       </div>
       <div class="diff-card">
-        <div class="diff-icon">↗</div>
+        <div class="diff-icon">&#8599;</div>
         <h3>Strategy-first, always</h3>
-        <p>Every creative is built from real data — what's working in your niche right now. No guessing, no templates.</p>
+        <p>Every creative is built from real data. What is working in your niche right now. No guessing, no templates.</p>
       </div>
       <div class="diff-card">
-        <div class="diff-icon">◻</div>
-        <h3>No complexity, no noise</h3>
-        <p>You always know what's happening and why. One clear month, real results — no fluff in between.</p>
+        <div class="diff-icon">&#9723;</div>
+        <h3>No noise</h3>
+        <p>You always know what is happening and why. One clear month, real results.</p>
       </div>
       <div class="diff-card">
-        <div class="diff-icon">⬡</div>
+        <div class="diff-icon">&#11041;</div>
         <h3>Two people, one focus</h3>
-        <p>Creative direction and operations under one roof — no agency hand-offs, no miscommunication.</p>
+        <p>Creative direction and operations under one roof. No agency hand-offs, no miscommunication.</p>
       </div>
       <div class="diff-card">
-        <div class="diff-icon">◈</div>
+        <div class="diff-icon">&#10792;</div>
         <h3>You stay comfortable</h3>
-        <p>You don't need to become a social media expert. We translate, handle, and keep you informed — so you focus on what you do best.</p>
+        <p>You do not need to become a social media expert. We translate, handle, and keep you informed.</p>
       </div>
     </div>
   </div>
@@ -1340,55 +672,48 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <span class="stag">Who we are</span>
     <h2 class="sh">The team behind<br>your growth.</h2>
-
     <div class="about-grid">
       <div>
         <p class="about-intro">
-          Claveer is a two-person studio built for business owners who want to <strong>feel confident on social media</strong> and actually see it working for them.<br><br>
-          We combine creative direction and strategic operations to build social presence that is <strong>genuinely yours</strong> — not a copy of what worked for someone else.
+          Our personal and professional experience are the key to unlock your full potential. <strong>(Remember you are the door)</strong><br><br>
+          We tailor with sensibility, artistry and human care.
         </p>
-        <ul class="values-list">
-          <li>
-            <div class="v-icon">◑</div>
-            <div class="v-text">
-              <h4>Instagram-first specialists</h4>
-              <p>Everything we do is designed with Instagram's formats, algorithms, and audience behaviors in mind.</p>
-            </div>
-          </li>
-          <li>
-            <div class="v-icon">◑</div>
-            <div class="v-text">
-              <h4>Small by design</h4>
-              <p>We take on select clients each month so your project gets our full attention — not a junior team's.</p>
-            </div>
-          </li>
-          <li>
-            <div class="v-icon">◑</div>
-            <div class="v-text">
-              <h4>Honest about results</h4>
-              <p>We share what's working, what isn't, and what we'd do next. No spin, no vanity metrics.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
 
+      </div>
       <div class="team-cards">
         <div class="team-card">
-          <div class="team-avatar">CV</div>
-          <div>
-            <div class="team-name">Clarisa Vélez</div>
-            <div class="team-role">Lead Creative &amp; Strategist</div>
-            <div class="team-bio">Leads creative direction, visual design, and ad production for every client. She defines the strategy, crafts the 6 creatives, and makes sure every campaign looks and feels intentional. She's also grown her own organic communities — which means she knows what actually resonates with real audiences.</div>
+          <div class="team-avatar-wrap">
+            <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/Clarisa_Velez.png" alt="Clarisa Velez">
+          </div>
+          <div class="team-name">Clarisa Velez</div>
+          <div class="team-role">Lead Creative &amp; Graphic Designer</div>
+          <div class="team-bio">3 years of experience at LightED Play in Social Media and Illustration. She has grown her own communities around design and creativity.<br><br>
+          <span style="color:var(--or);font-weight:800;">Youtube</span> 399,463 impressions<br>
+          <span style="color:var(--or);font-weight:800;">Instagram</span> 2M impressions</div>
+          <div class="team-socials">
+            <a href="https://www.youtube.com/@clarisavelezdesigner" class="team-social" title="YouTube" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com/_clarisa_velez_/" class="team-social" title="Instagram" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/clarisa-velez/" class="team-social" title="LinkedIn" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
           </div>
         </div>
         <div class="team-card">
-          <div class="team-avatar">QP</div>
-          <div>
-            <div class="team-name">Cuauhtli Pedraza</div>
-            <div class="team-role">Operations &amp; Sales Lead</div>
-            <div class="team-bio">Runs client relationships from the first call to the closing session. He handles contracts, CRM, weekly KPI reports, and makes sure every client always knows where they stand. He brings operational clarity to the creative process so nothing falls through the cracks.</div>
+          <div class="team-avatar-wrap">
+            <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/cuauhtli.png" alt="Cuauhtli Pedraza">
+          </div>
+          <div class="team-name">Cuauhtli Pedraza</div>
+          <div class="team-role">Tech Literate &amp; Business Savvy</div>
+          <div class="team-bio">5 years of experience working as CSR &amp; integrations support, having exclusive insights on companies like Allianz partners, PayPal, restaurant 365 and the dubbing industry.</div>
+          <div class="team-socials">
+            <a href="https://www.linkedin.com/in/cuauhtli-vargas-pedraza-1b523123a/?locale=es" class="team-social" title="LinkedIn" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -1399,24 +724,40 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="container">
-    <h2 class="sh">Ready to show up<br>like you mean it?</h2>
-    <p>A 30-minute call is all it takes to know if we're a fit.</p>
-    <a href="mailto:customer.success@claveer.com" class="btn-white">Book a free strategy call ↗</a>
+    <h2 class="sh">Send us an email<br>we will do the rest</h2>
+    <p>Excited to meet you, Claveer team</p>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="f388d44e-fe7c-484e-af55-fde129cb0f17">
+      <input type="hidden" name="subject" value="New message from Claveer website">
+      <input type="hidden" name="redirect" value="false">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your business..." rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn-white">Send message &#8599;</button>
+      <p class="form-success" id="formSuccess">Message sent. We will be in touch soon.</p>
+    </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <svg width="18" height="18" viewBox="0 0 100 100" fill="none">
-      <ellipse cx="50" cy="55" rx="38" ry="28" stroke="#E86A1A" stroke-width="7" transform="rotate(-20 50 55)"/>
-      <line x1="30" y1="15" x2="70" y2="85" stroke="#E86A1A" stroke-width="7" stroke-linecap="round"/>
-      <line x1="20" y1="50" x2="80" y2="50" stroke="#E86A1A" stroke-width="7" stroke-linecap="round"/>
-    </svg>
+    <img src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/claver_icon.png" alt="Claveer" style="width:28px;height:28px;object-fit:contain;">
     <span class="footer-logo-txt">Claveer</span>
   </div>
-  <span><a href="mailto:customer.success@claveer.com">customer.success@claveer.com</a> &nbsp;·&nbsp; +52 1 55 6499 7805</span>
-  <span>© 2026 Claveer. All rights reserved.</span>
+  <span><a href="mailto:customer.success@claveer.com">customer.success@claveer.com</a></span>
+  <span>2026 Claveer. All rights reserved.</span>
 </footer>
 
 <script>
@@ -1425,7 +766,7 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
   const pills  = Array.from(document.querySelectorAll('.proc-pill'));
   const stages = Array.from(document.querySelectorAll('.process-stage'));
   let current = 0;
-  let timer   = null;
+  let timer = null;
 
   function activate(index, restartAuto) {
     pills[current].classList.remove('active');
@@ -1439,17 +780,37 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
     }
   }
 
-  function advance() {
-    activate((current + 1) % pills.length, false);
-  }
+  function advance() { activate((current + 1) % pills.length, false); }
 
-  pills.forEach((pill, i) => {
-    pill.addEventListener('click', () => activate(i, true));
-  });
+  pills.forEach((pill, i) => { pill.addEventListener('click', () => activate(i, true)); });
 
   activate(0, false);
   timer = setInterval(advance, DURATION);
 })();
+
+document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: data
+  });
+  const json = await res.json();
+
+  if (json.success) {
+    document.getElementById('formSuccess').style.display = 'block';
+    form.reset();
+    btn.textContent = 'Sent ✓';
+  } else {
+    btn.textContent = 'Error. Try again.';
+    btn.disabled = false;
+  }
+});
 </script>
 
 </body>
