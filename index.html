@@ -239,27 +239,24 @@ nav {
   stroke-dashoffset: 1000;
 }
 .stage-circle-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -52%);
-  width: 130%;
-  height: 200%;
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.4em;
+  height: 1.4em;
   object-fit: contain;
   pointer-events: none;
-  z-index: 0;
-  mix-blend-mode: lighten;
-  opacity: 1;
+  mix-blend-mode: multiply;
+  margin-left: -0.1em;
+  margin-right: -0.2em;
+  position: relative;
+  top: -0.1em;
 }
 .stage-circle-wrap {
   position: relative;
   display: inline-block;
   white-space: nowrap;
   z-index: 1;
-}
-.stage-circle-wrap > *:not(img):not(svg) {
-  position: relative;
-  z-index: 2;
+  isolation: isolate;
 }
 .spotlight-desc { max-width: 320px; font-size: 16px; font-weight: 800; color: var(--gm); line-height: 1.75; flex-shrink: 0; }
 .spotlight-desc strong { color: var(--bk); }
@@ -608,9 +605,9 @@ footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
 <section class="spotlight-section">
   <div class="spotlight-inner">
     <div class="spotlight-top">
-      <h2 class="spotlight-heading reveal-left">
-        We provide the <em>spotlight</em>;<br>
-        you take center <span class="stage-circle-wrap" id="ul-stage">stage<svg viewBox="0 0 120 18" preserveAspectRatio="none"><path d="M2,12 Q30,4 60,10 Q90,16 118,8" class="ul-path"/></svg><img class="stage-circle-img" src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/spotlight-sticker.png" alt=""></span>.
+      <h2 class="spotlight-heading reveal-left" style="position:relative;">
+        We provide the <em>spotlight</em>;<img class="stage-circle-img" src="https://raw.githubusercontent.com/burnermailclara-commits/Claveer/main/spotlight-sticker.png" alt=""><br>
+        you take center <span class="stage-circle-wrap" id="ul-stage">stage<svg viewBox="0 0 120 18" preserveAspectRatio="none"><path d="M2,12 Q30,4 60,10 Q90,16 118,8" class="ul-path"/></svg></span>.
       </h2>
       <p class="spotlight-desc reveal-right">
         You have something worth sharing. But <strong>does the internet know?</strong> No presence = Lost revenue.
